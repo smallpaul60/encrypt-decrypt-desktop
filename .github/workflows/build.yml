@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-windows:
+    name: Windows Build
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -28,12 +29,13 @@ jobs:
         run: npm run dist -- --win
 
       - name: Upload Windows installer
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: windows-installer
           path: dist/*.exe
 
   build-linux:
+    name: Linux Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -57,7 +59,7 @@ jobs:
         run: npm run dist -- --linux
 
       - name: Upload Linux artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: linux-artifacts
           path: |
@@ -65,6 +67,7 @@ jobs:
             dist/*.deb
 
   build-mac:
+    name: macOS Build
     runs-on: macos-latest
     steps:
       - name: Checkout code
@@ -85,7 +88,7 @@ jobs:
         run: npm run dist -- --mac
 
       - name: Upload macOS artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: macos-artifacts
           path: |
