@@ -51,7 +51,7 @@ jobs:
           node-version: '20'
 
       - name: Prepare build tools
-        run: sudo apt-get update && sudo apt-get install -y wine32 wine64 nsis p7zip-full
+        run: sudo apt-get update && sudo apt-get install -y p7zip-full
 
       - name: Install dependencies
         run: npm ci
