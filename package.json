@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "build": "react-scripts build",
-    "dist": "electron-builder"
+    "dist": "electron-builder --publish never"
   },
   "author": "Paul Hainline <issielou8@protonmail.com>",
   "license": "MIT",
@@ -35,7 +35,6 @@
       "preload.cjs",
       "node_modules/**/*"
     ],
-    "publish": ["never"],
     "icon": "build/icons/RaptorLockIP_Logo_Right",
     "mac": {
       "target": [
