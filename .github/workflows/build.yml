@@ -31,11 +31,12 @@ jobs:
       - name: Debug dist contents
         run: ls -R dist || echo "dist/ not found or empty"
 
-      - name: Upload Windows installer
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: windows-installer
-          path: dist/*.exe
+      # TEMPORARILY DISABLED to bypass artifact error
+      # - name: Upload Windows installer
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: windows-installer
+      #     path: dist/*.exe
 
   build-linux:
     name: Linux Build
@@ -64,13 +65,14 @@ jobs:
       - name: Debug dist contents
         run: ls -R dist || echo "dist/ not found or empty"
 
-      - name: Upload Linux artifacts
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: linux-artifacts
-          path: |
-            dist/*.AppImage
-            dist/*.deb
+      # TEMPORARILY DISABLED to bypass artifact error
+      # - name: Upload Linux artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: linux-artifacts
+      #     path: |
+      #       dist/*.AppImage
+      #       dist/*.deb
 
   build-mac:
     name: macOS Build
@@ -96,11 +98,11 @@ jobs:
       - name: Debug dist contents
         run: ls -R dist || echo "dist/ not found or empty"
 
-      - name: Upload macOS artifacts
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: macos-artifacts
-          path: |
-            dist/*.dmg
-            dist/*.zip
-
+      # TEMPORARILY DISABLED to bypass artifact error
+      # - name: Upload macOS artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: macos-artifacts
+      #     path: |
+      #       dist/*.dmg
+      #       dist/*.zip
