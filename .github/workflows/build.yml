@@ -2,12 +2,12 @@ name: Cross-Platform Electron Build
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   build-windows:
-    name: Windows Build
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -21,10 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build React UI
+      - name: Build React
         run: npm run build
 
-      - name: Package for Windows
+      - name: Package Windows
         run: npm run dist -- --win
 
       - name: Upload Windows installer
@@ -34,7 +34,6 @@ jobs:
           path: dist/*.exe
 
   build-linux:
-    name: Linux Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -45,16 +44,16 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install build tools
+      - name: Prepare build tools
         run: sudo apt-get update && sudo apt-get install -y wine32 wine64 nsis p7zip-full
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build React UI
+      - name: Build React
         run: npm run build
 
-      - name: Package for Linux
+      - name: Package Linux
         run: npm run dist -- --linux
 
       - name: Upload Linux artifacts
@@ -66,7 +65,6 @@ jobs:
             dist/*.deb
 
   build-mac:
-    name: macOS Build
     runs-on: macos-latest
     steps:
       - name: Checkout code
@@ -80,10 +78,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build React UI
+      - name: Build React
         run: npm run build
 
-      - name: Package for macOS
+      - name: Package macOS
         run: npm run dist -- --mac
 
       - name: Upload macOS artifacts
