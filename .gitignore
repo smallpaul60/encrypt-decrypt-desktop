@@ -1,0 +1,15 @@
+# Node deps
+node_modules/
+
+# React build
+build/
+
+# Electron dist
+dist/
+
+# Logs & OS/editor cruft
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

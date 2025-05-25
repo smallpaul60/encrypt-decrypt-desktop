@@ -1,0 +1,76 @@
+{
+  "name": "encrypt-decrypt-desktop",
+  "version": "1.0.0",
+  "description": "Electron app for file encryption & decryption",
+  "homepage": ".",
+  "main": "electron.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build": "react-scripts build",
+    "dist": "electron-builder"
+  },
+  "author": "Paul Hainline <issielou8@protonmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0",
+    "web-vitals": "^5.0.1"
+  },
+  "devDependencies": {
+    "electron": "^36.2.1",
+    "electron-builder": "^26.0.12",
+    "react-scripts": "^5.0.1"
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.raptorlockip.encryptor",
+    "productName": "RaptorLockIP Encryptor",
+    "directories": {
+      "buildResources": "build"
+    },
+    "files": [
+      "build/**/*",
+      "electron.cjs",
+      "preload.cjs",
+      "node_modules/**/*"
+    ],
+    "icon": "build/icons/RaptorLockIP_Logo_Right",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": false
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
