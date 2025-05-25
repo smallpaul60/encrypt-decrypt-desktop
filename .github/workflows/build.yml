@@ -2,9 +2,12 @@ name: Cross-Platform Electron Build
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'   # Trigger only when version tag like v1.0.0 is pushed
   workflow_dispatch:
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build-windows:
@@ -27,16 +30,6 @@ jobs:
 
       - name: Package Windows
         run: npm run dist -- --win
-
-      - name: Debug dist contents
-        run: ls -R dist || echo "dist/ not found or empty"
-
-      # TEMPORARILY DISABLED to bypass artifact error
-      # - name: Upload Windows installer
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: windows-installer
-      #     path: dist/*.exe
 
   build-linux:
     name: Linux Build
@@ -62,18 +55,6 @@ jobs:
       - name: Package Linux
         run: npm run dist -- --linux
 
-      - name: Debug dist contents
-        run: ls -R dist || echo "dist/ not found or empty"
-
-      # TEMPORARILY DISABLED to bypass artifact error
-      # - name: Upload Linux artifacts
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: linux-artifacts
-      #     path: |
-      #       dist/*.AppImage
-      #       dist/*.deb
-
   build-mac:
     name: macOS Build
     runs-on: macos-latest
@@ -94,15 +75,3 @@ jobs:
 
       - name: Package macOS
         run: npm run dist -- --mac
-
-      - name: Debug dist contents
-        run: ls -R dist || echo "dist/ not found or empty"
-
-      # TEMPORARILY DISABLED to bypass artifact error
-      # - name: Upload macOS artifacts
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: macos-artifacts
-      #     path: |
-      #       dist/*.dmg
-      #       dist/*.zip
