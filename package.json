@@ -35,6 +35,7 @@
       "preload.cjs",
       "node_modules/**/*"
     ],
+    "publish": "never",
     "icon": "build/icons/RaptorLockIP_Logo_Right",
     "mac": {
       "target": [
